@@ -1,0 +1,79 @@
+; ions.mdp - used as input into grompp to generate ions.tpr
+; All unspecified parameters adopt their own defaults values.
+
+; Section 1: Preprocessing: None (default: no defines)
+
+; Section 2: Run Control
+integrator  = steep         ; Algorithm (steep = steepest descent minimization)
+tinit       = 0             ; (0) [ps] starting of the run
+dt          = 0.001         ; (0,001) [ps] time step for integration (only meaningful for time-based integrators)
+nsteps      = 500000        ; (0) maximum number of steps to integrate or minimize
+init-step   = 0             ; (0) t = tinit + dt*(init-step+i)
+; Other parameters:
+; simulation-part (default: 0)
+; parameters related to com removal: comm-mode (not sure about the default), nstcomm (100 [steps], frequency); comm-grps (whole system)
+
+; Section 3: Langevin dynamics: Use defaults
+
+; Section 4: Energy minnimization
+emtol       = 10.0        ; (10.0) Stop minimization when the maximum force < 10.0 kJ/mol/nm
+emstep      = 0.01          ; (0.01) [nm] Minimization step size
+; Other parameters like nstcgsteep and nbfgscorr are for other methods of energy minimization 
+
+; Section 5: Shell Molecular Dynamics: Use defaults
+
+; Section 6: Test particle insertion: Use defaults (but only for integrator=tpi and integrator=tpic)
+
+; Section 7: Output control: Use defaults
+
+; Section 8: Neighbor searching/Electrostatics/Van der Waals
+cutoff-scheme   = Verlet    ; Buffered neighbor searching
+nstlist         = 10        ; (10) Frequency to update the neighbor list and long range forces
+ns_type         = grid      ; Method to determine neighbor list (simple, grid)
+pbc             = xyz       ; Periodic Boundary Conditions in all 3 dimensions
+;rlist           = 1.05      ; (1) [nm] cut-off distance for the short-range neighbor list
+coulombtype     = Cut-off   ; Treatment of long range electrostatic interactions (rlist>=rcoulomb)
+rcoulomb        = 1.0       ; Short-range electrostatic cut-off
+rvdw            = 1.0       ; Short-range Van der Waals cut-off
+
+; Section 9: Tables
+
+; Section 10: Ewald
+
+; Section 11: Temperature coupling
+
+; Section 12: Pressure coupling
+
+; Section 13: Simulated annealing
+
+; Section 14: Velocity generation
+
+; Section 15: Bonds
+
+; Section 16: Energy group exculsions
+
+; Section 17: Walls
+
+; Section 18: COM pulling: false
+
+; Section 19: AWH adaptive biasing: false
+
+; Section 20: Enforced rotation: false
+
+; Section 21: NMR refinement
+
+; Section 22: Free energy calculation: free-energy = no
+
+; Section 23: Expanded Ensemble calculations
+
+; Section 24: Non-equilibrium MD
+
+; Section 25: Electric fields
+
+; Section 26: Mixed quantum/classical molecular dynamics
+
+; Section 27: Implicit solvent
+
+; Section 28: Computational Electrophysiology
+
+; Section 29: User defined thingies
